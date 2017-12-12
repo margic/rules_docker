@@ -25,8 +25,7 @@ def _binary_name(ctx):
   return "/".join([
       ctx.attr.directory,
       ctx.label.package,
-      #ctx.attr.binary.label.name,
-      ctx.label.name,
+      ctx.attr.binary.label.name,
   ])
 
 def _runfiles_dir(ctx):
@@ -203,7 +202,7 @@ def _app_layer_impl(ctx, runfiles=None, emptyfiles=None):
   symlinks += {
     # Create a symlink from our entrypoint to where it will actually be put
     # under runfiles.
-    _binary_name(ctx): "/".join([_reference_dir(ctx), ctx.label.package,
+    _binary_name(ctx): "/".join([_reference_dir(ctx), ctx.label.package, "linux_amd64_pure_stripped",
                                  ctx.attr.binary.label.name]),
     # Create a directory symlink from <workspace>/external to the runfiles
     # root, since they may be accessed via either path.
