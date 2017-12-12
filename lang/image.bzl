@@ -25,7 +25,8 @@ def _binary_name(ctx):
   return "/".join([
       ctx.attr.directory,
       ctx.label.package,
-      ctx.attr.binary.label.name,
+      #ctx.attr.binary.label.name,
+      ctx.label.name,
   ])
 
 def _runfiles_dir(ctx):
